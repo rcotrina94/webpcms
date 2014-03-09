@@ -38,13 +38,15 @@ exports.product_list = function(req, res){
 };
 
 exports.new_product = function(req, res){
+	var title = 'Nuevo Producto';
+
 	if (req.method == 'GET'){
 		Brand.find({}, function (err, brands){
 			if (err){
 				return res.send("Un error ha ocurrido");
 			} else {
 				res.render('admin/products/new.html', {
-					title: 'Nuevo Producto',
+					title: title,
 					brands: brands,
 					active: 'new_product',
 					msg: null,
@@ -61,50 +63,73 @@ exports.new_product = function(req, res){
 
 		Brand.findOne({ 'name': namebrand }, 'id name', function (e, result){
 			var productSave = function(){
-
-				newProduct.save(function (err, product){
+				newProduct.save(function (err, productSaved){
 					if (err) {
+
 						if(brandID && isNewBrand){
 							Brand.remove({_id:brandID}, function(re, callback){
 								if (re) {console.log(re);}
 								console.log("Marca eliminada por error al guardar producto: "+brandID)
 							});
 						}
+
 						console.log(err);
 						Brand.find({}, function (error, brands){
 							if (error){
 								console.log(error);
-							} 
-							return res.render('admin/products/new.html', {
-								title: 'Nuevo Producto',
-								brands: brands,
-								active: 'new_product',
-								msg:{
-									title:'Error registrando producto',
-									body:{
-										errors: err.errors
+								return res.send("Un error ha ocurrido")
+							} else {
+								return res.render('admin/products/new.html', {
+									title: title,
+									brands: brands,
+									active: 'new_product',
+									msg:{
+										error: true,
+										title: 'Error registrando producto',
+										body:  err,
+										data_sent: err?product:null
 									}
-								}
-							});
+								});
+							}
 						});
+
 					} else {
 						console.log("Added product (ID: '"+newProduct._id+"') to Brand "+"(ID: "+brandID+")");
 						
+						var brandError = function(e){
+							res.render('admin/products/new.html', {
+								title: title,
+								brands: null,
+								active: 'new_product',
+								msg:{
+									error: true,
+									title:'Error al actualizar la lista de marcas',
+									body:e
+								}
+							});
+						}
+
 						Brand.update({_id:brandID},{$push:{products:newProduct._id} },{},function(errorb, data){
-							if (errorb){ console.log(errorb);} else {
+							if (errorb){
+								console.log(errorb);
+								return brandError(errorb);
+							} else {
 								Brand.find({}, function (error, brands){
 									if (error){
 										console.log(error);
-									} 
-									return res.render('admin/products/new.html', {
-										title: 'Nuevo Producto',
-										brands: brands,
-										active: 'new_product',
-										msg:{
-											title:error?'Error registrando producto':'Producto registrado correctamente',
-											body:error?error:newProduct.name,
-										}
-									});
+										return brandError(error);
+									} else {
+										return res.render('admin/products/new.html', {
+											title: title,
+											brands: brands,
+											active: 'new_product',
+											msg:{
+												error: false,
+												title:'Producto registrado correctamente',
+												body:newProduct.name,
+											}
+										});
+									}
 								});	
 							}							
 						});
@@ -120,6 +145,7 @@ exports.new_product = function(req, res){
 				newProduct.brand = result._id;
 				brandID = result._id;
 				productSave();
+
 			} else {
 				var newBrand = new Brand({name:namebrand});
 				newProduct.brand = newBrand._id

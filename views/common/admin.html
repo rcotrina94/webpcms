@@ -35,7 +35,7 @@
 {% block container %}
 <div class="container-fluid">
 	<div class="row">
-	{% include "common/admin-sidebar.html" %}
+	{% include "common/admin.sidebar.html" %}
 		<div id="main-content" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 		{% block main %}
 		{% endblock %}
@@ -60,5 +60,8 @@
 <script src="/javascripts/plugins/fileinput.js"></script> 
 {% block inline_js %}
 {% endblock %}
+{% if msg %}
+	{% include "common/admin.form.js.html" %}
+{% endif %}
 
 {% endblock %}

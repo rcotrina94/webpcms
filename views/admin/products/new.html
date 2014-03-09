@@ -5,7 +5,8 @@
 		<button form="form" type="submit" class="btn btn-lg btn-success">
 		<i class="icon-check icon-white"></i> Guardar</button>
 	</div>
-	<h1 class="page-header">{{ site.title }}</h1>
+	
+	<h1 class="page-header">{{ title }}</h1>
 
 	<form id="form" method="post" class="form form-horizontal">
 		<fieldset class="col-md-6">
@@ -100,7 +101,6 @@
 
 {% block inline_js %}
 	<script type="text/javascript">
-		var msg; 
 		function addOffer(){
 			$('#priceOffer').show();
 			$('#addOfferBtn').hide();
@@ -109,33 +109,5 @@
 			$('#priceOffer').hide().find('input').val('');
 			$('#addOfferBtn').show();
 		}
-
-		{% if msg.body.errors %}
-			$(function () {
-				var emsg;
-				var msg = JSON.parse('{{ fn.toString(msg) | safe }}');
-
-				jQuery.each (msg.body.errors, function(ename, ebody) {
-					if(ebody.type == 'required'){
-						emsg = "Éste campo es requerido.";
-					}
-					jQuery('#'+ename).closest('.form-group')
-						.addClass('has-error')
-						.append('<label class="help-block col-md-offset-2 col-md-10" for="'+ename+'">'+emsg+'</label>');
-				});
-
-				var alert = '<div style="position:fixed;top:70px;right:20px;"><div id="myAlert" class="alert alert-dismissable alert-danger fade in" data-alert="alert">';
-						alert+= '<button type="button" class="close" data-dismiss="alert">×</button>';
-						alert+= '<h4>{{ msg.title }}</h4>';
-						alert+= 'Por favor corrija los errores para continuar.' 
-						alert+= '</div></div>' 
-
-				jQuery('#main-content').append(alert);
-			});
-		{% endif %}
-
-		{% if (msg and msg.body.success) %}
-			
-		{% endif %}
 	</script>
 {% endblock %}

@@ -1,37 +1,39 @@
 {% extends "common/admin.html" %}
 {% block main %}
-<div class="page-header pull-right hidden-print">
-	<a href="/admin/brands/new" class="btn btn-default">Cancelar</a>
-	<button form="form" type="submit" class="btn btn-lg btn-success">
-		<i class="icon-check icon-white"></i> Guardar</button>
+	<div class="page-header pull-right hidden-print">
+		<a href="/admin/brands/new" class="btn btn-default">Cancelar</a>
+		<button form="form" type="submit" class="btn btn-lg btn-success">
+			<i class="icon-check icon-white"></i> Guardar
+		</button>
 	</div>
-	<h1 class="page-header">{{ site.title }}</h1>
+
+	<h1 class="page-header">{{ title }}</h1>
 
 	<form id="form" method="post" class="form form-horizontal col-md-6">
 		<div class="form-group">
-			<label for="name" class="col-lg-2 control-label">Nombre:</label>
-			<div class="col-lg-10">
+			<label for="name" class="col-md-2 control-label">Nombre:</label>
+			<div class="col-md-10">
 				<input autocomplete="off" class="form-control" id="name" name="name" pattern="^[0-9A-Za-zÁÉÍÓÚáéíóuñÑ\x20\s]*$">
 			</div>
 		</div>
 
 		<div class="form-group">
-			<label for="name" class="col-lg-2 control-label">Slug:</label>
-			<div class="col-lg-10">
+			<label for="name" class="col-md-2 control-label">Slug:</label>
+			<div class="col-md-10">
 				<input autocomplete="off" class="form-control" id="slug_pre" name="slug_pre" placeholder="Identificador único" readonly="readonly">
 			</div>
 		</div>
 
 		<div class="form-group">
-			<label for="name" class="col-lg-2 control-label">Descripción:</label>
-			<div class="col-lg-10">
+			<label for="name" class="col-md-2 control-label">Descripción:</label>
+			<div class="col-md-10">
 				<textarea class="form-control" rows="3" id="description" name="description"></textarea>
 			</div>
 		</div>
 	</form>
-	{% endblock %}
+{% endblock %}
 
-	{% block inline_js %}
+{% block inline_js %}
 	<script type="text/javascript">
 		function slugify (str, options) {
 			options || (options = {});
@@ -42,45 +44,9 @@
 		};
 
 		$(function () {
-
 			$('#name').bind('input', function() { 
 		    $('#slug_pre').val(slugify($(this).val())); // get the current value of the input field.
 		  });
 		});
-
-		var alert = '<div style="position:fixed;top:70px;right:20px;"><div id="myAlert" class="alert alert-dismissable ';
-		{% if msg %}
-		$(function () {
-			var msg = JSON.parse('{{ fn.toString(msg) | safe }}');
-			
-			if(msg.error){
-				var emsg;
-				jQuery.each (msg.body.errors, function(ename, ebody) {
-					if(ebody.type == 'required'){
-						emsg = "Éste campo es requerido.";
-					} else if(ebody.type == 'duplicated'){
-						emsg = "Ya existe un registro con el mismo valor.";
-					}
-					jQuery('#'+ename).closest('.form-group')
-					.addClass('has-error')
-					.append('<label class="help-block col-sm-offset-2 col-lg-10" for="'+ename+'">'+emsg+'</label>');
-				});
-
-				if(msg.data_sent){
-					jQuery.each(msg.data_sent, function(input, val) {
-						jQuery('#'+input).val(val);
-					});
-				}
-			}
-			alert+= ((msg.error)?'alert-danger':'alert-success')+' fade in" data-alert="alert">';
-			alert+= '<button type="button" class="close" data-dismiss="alert">×</button>';
-			alert+= '<h4>{{ msg.title }}</h4>';
-			alert+= ((msg.error)?'Por favor corrija los errores para continuar.':'');
-			alert+= '</div></div>' 
-
-			jQuery('#main-content').append(alert);
-		});
-
-{% endif %}
-</script>
+	</script>
 {% endblock %}
