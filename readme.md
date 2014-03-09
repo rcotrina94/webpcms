@@ -7,7 +7,7 @@ In brief: webPCMS is a simple web application that provides a way to put your pr
 
 ## How-to Install
 
-1. Install node.js enviroment
+1. Install a Node.js and MongoDB enviroment
 2. Download this repository or clone:
 	* Mercurial:
 		* `hg clone https://bitbucket.org/rcotrina94/webpcms`
