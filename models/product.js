@@ -27,7 +27,7 @@ productSchema = new Schema({
 		description : String,
 		images : {
 			featured : String,
-			secondary: String
+			secondary: { type: [String] }
 		},
 		dimensions:{
 			height: Number,
@@ -35,20 +35,20 @@ productSchema = new Schema({
 			depth: Number,
 			unit: String
 		},
-		custom: [CustomDataSchema],
+		custom_data: { type: [CustomDataSchema] }
 	},
-	variants: {type: [Schema.Types.ObjectId], ref:'Product'},
+	variants: { type: [Schema.Types.ObjectId], ref:'Product'},
 	meta:{
-		shipping_methods: {type: [String], enum:shipment_methods, default:shipment_methods},
-		payment_methods: {type: [String], enum:payment_methods, default:payment_methods},
-		category: [String],
-		tags : [String],
+		shipping_methods: { type: [String], enum:shipment_methods, default:shipment_methods },
+		payment_methods: { type: [String], enum:payment_methods, default:payment_methods },
+		category: { type: [String] }, 
+		tags : { type: [String] },
 		published_by : { type: Schema.Types.ObjectId, ref:'User' },
 		published_date: { type:Date, default: Date.now },
 		last_edited: { type:Date, default: Date.now },
-		last_edited_by: { type: Schema.Types.ObjectId, ref:'User' },
+		last_edited_by: { type: Schema.Types.ObjectId, ref:'User' }
 	},
-	sales: {type: Number, default:0, required:true}
+	sales: { type: Number, default:0, required:true}
 });
 
 productSchema.pre('save', function(next) {

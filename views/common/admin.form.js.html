@@ -1,36 +1,36 @@
 <script type="text/javascript">
-var alert = '<div style="position:fixed;top:70px;right:20px;"><div id="myAlert" class="alert alert-dismissable ';
-var msg = JSON.parse('{{ fn.toString(msg) | safe }}'); 
+	var alert = '<div style="position:fixed;top:70px;right:20px;"><div id="myAlert" class="alert alert-dismissable ';
+	var msg = JSON.parse('{{ fn.toString(msg) | safe }}'); 
 
-$(function () {
-	if(msg.error){
-		var emsg;
+	$(function () {
+		if(msg.error){
+			var emsg;
 
-		jQuery.each (msg.body.errors, function(ename, ebody) {
-			if(ebody.type == 'required'){
-				emsg = "Éste campo es requerido.";
-			} else if(ebody.type == 'duplicated'){
-				emsg = "Ya existe un registro con el mismo valor.";
-			}
-			jQuery('#'+ename).closest('.form-group')
-				.addClass('has-error')
-				.append('<label class="help-block col-md-offset-2 col-md-10" for="'+ename+'">'+emsg+'</label>');
-		});
-
-		if(msg.data_sent){
-			jQuery.each(msg.data_sent, function(input, val) {
-				jQuery('#'+input).val(val);
+			jQuery.each (msg.body.errors, function(ename, ebody) {
+				if(ebody.type == 'required'){
+					emsg = "Éste campo es requerido.";
+				} else if(ebody.type == 'duplicated'){
+					emsg = "Ya existe un registro con el mismo valor.";
+				}
+				jQuery('#'+ename).closest('.form-group')
+					.addClass('has-error')
+					.append('<label class="help-block col-md-offset-2 col-md-10" for="'+ename+'">'+emsg+'</label>');
 			});
+
+			if(msg.data_sent){
+				jQuery.each(msg.data_sent, function(input, val) {
+					jQuery('#'+input).val(val);
+				});
+			}
 		}
-	}
 
-	alert+= ((msg.error)?'alert-danger':'alert-success')+' fade in" data-alert="alert">';
-	alert+= '<button type="button" class="close" data-dismiss="alert">×</button>';
-	alert+= '<h4>{{ msg.title }}</h4>';
-	alert+= ((msg.error)?'Por favor corrija los errores para continuar.':'');
-	alert+= '</div></div>' 
+		alert+= ((msg.error)?'alert-danger':'alert-success')+' fade in" data-alert="alert">';
+		alert+= '<button type="button" class="close" data-dismiss="alert">×</button>';
+		alert+= '<h4>{{ msg.title }}</h4>';
+		alert+= ((msg.error)?'Por favor corrija los errores para continuar.':'');
+		alert+= '</div></div>' 
 
-	jQuery('#main-content').append(alert);
-	
-});
+		jQuery('#main-content').append(alert);
+		
+	});
 </script>
