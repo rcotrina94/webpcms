@@ -2,7 +2,10 @@ var handler = require('../handlers');
 var products = require('../handlers/products');
 var admin = require('../handlers/admin');
 
+/* Index */
 app.get('/', handler.index);
+
+/* Admin */
 app.get('/admin', admin.index);
 app.get('/admin/products', admin.product_list);
 app.all('/admin/products/new', admin.new_product);
