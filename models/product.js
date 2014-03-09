@@ -5,19 +5,6 @@ function presave(product){
 	if (!product.price){
 		product.price = product.base_price;
 	}
-	
-	// console.log("Brand en Presave: "+product.brand);
-/*	Brand.findById(product.brand, function (err, result){
-		if (err) console.log(err);
-
-		// console.log("Resultados del presave: "+result);
-
-		if (result){
-			product.brand_name = result.name;
-		}
-	});*/
-	
-	// console.log(product.brand);
 }
 
 var CustomDataSchema = new Schema ({
@@ -63,32 +50,6 @@ productSchema = new Schema({
 	},
 	sales: {type: Number, default:0, required:true}
 });
-
-/*productSchema.path('brand').set(function (namebrand) {
-	// console.log("Nombre de marca: "+namebrand);
-	var brandID;
-	Brand.findOne({ 'name': namebrand }, 'id name', function (err, result){
-		if (err) console.log(err);
-
-		if (result){
-			// console.log("Result: "+result);
-			brandID =  result.id;
-			
-		} else {
-			var newBrand = new Brand({name:namebrand});
-			newBrand.save(function (err, newBrandID){
-				console.log("newBrandID : "+newBrandID)
-				brandID = newBrandID.id;
-			});
-		}
-	});
-	return mongoose.Types.ObjectId(brandID);
-});*/
-// console.log("Product Schema created");
-
-productSchema.methods.show = function () {
-	// console.log(this);
-}
 
 productSchema.pre('save', function(next) {
 	presave(this);

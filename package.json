@@ -2,7 +2,6 @@
   "name": "webPCMS",
   "description": "web Product Catalog Management System",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "start": "node app.js"
   },
