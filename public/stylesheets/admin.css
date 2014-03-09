@@ -1,0 +1,142 @@
+.navbar-static-side ul li {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+/* Navigation */
+
+
+
+/* Sidebar Menu Styles */
+
+ .sidebar-search {
+    padding: 15px;
+}
+
+.arrow {
+    float: right;
+}
+
+.fa.arrow:before {
+    content: "\f104";
+}
+
+.active > a > .fa.arrow:before {
+    content: "\f107";
+}
+
+.nav-second-level li,
+.nav-third-level li {
+    border-bottom: none !important;
+}
+
+.nav-second-level li a {
+    padding-left: 37px;
+}
+
+.nav-third-level li a {
+    padding-left: 52px;
+}
+
+@media(min-width:768px) {
+    .navbar-static-side {
+        padding: 0;
+        z-index: 1;
+        /*position: absolute;
+        width: 250px;*/
+        position: fixed;
+        top: 51px;
+        bottom: 0;
+        left: 0;
+        display: block;
+        overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    }
+}
+
+#side-menu .active:not(.parent) {
+    color: #fff;
+    background-color: #428bca;
+}
+
+#side-menu .active:not(.parent) > a {
+    color: #fff;
+}
+
+#side-menu .active:not(.parent) > a:hover {
+    background-color: #5496cf;
+}
+
+.input-group[class*="col-"] {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+small .badge{
+    background-color: #999;
+    color:white;
+    font-weight: bold;
+}
+
+.page-header.pull-right{
+    padding-right: 15px;
+}
+
+
+.btn-file {
+    overflow: hidden;
+    position: relative;
+    vertical-align: middle;
+}
+.btn-file>input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    transform: translate(-300px,0) scale(4);
+    font-size: 23px;
+    height: 100%;
+    direction: ltr;
+    cursor: pointer;
+}
+.fileinput {
+    margin-bottom: 9px;
+    display: inline-block;
+}
+.fileinput .form-control {
+    padding-top: 7px;
+    padding-bottom: 5px;
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+    cursor: text;
+}
+.fileinput .thumbnail {
+    overflow: hidden;
+    display: inline-block;
+    margin-bottom: 5px;
+    vertical-align: middle;
+    text-align: center;
+}
+.fileinput .thumbnail>img { max-height: 100% }
+.fileinput .btn { vertical-align: middle }
+.fileinput-exists .fileinput-new,
+.fileinput-new .fileinput-exists { display: none }
+.fileinput-inline .fileinput-controls { display: inline }
+.fileinput-filename {
+    vertical-align: middle;
+    display: inline-block;
+    overflow: hidden;
+}
+.form-control .fileinput-filename { vertical-align: bottom }
+.fileinput-new .input-group .btn-file { border-radius: 0 4px 4px 0 }
+.fileinput-new .input-group .btn-file.btn-xs,
+.fileinput-new .input-group .btn-file.btn-sm { border-radius: 0 3px 3px 0 }
+.fileinput-new .input-group .btn-file.btn-lg { border-radius: 0 6px 6px 0 }
+.form-group.has-warning .fileinput .fileinput-preview { color: #8a6d3b }
+.form-group.has-warning .fileinput .thumbnail { border-color: #faebcc }
+.form-group.has-error .fileinput .fileinput-preview { color: #a94442 }
+.form-group.has-error .fileinput .thumbnail { border-color: #ebccd1 }
+.form-group.has-success .fileinput .fileinput-preview { color: #3c763d }
+.form-group.has-success .fileinput .thumbnail { border-color: #d6e9c6 }
+.input-group-addon:not(:first-child) { border-left: 0 }

@@ -1,0 +1,61 @@
+{% extends "common/admin.html" %}
+{% block main %}
+	<h1 class="page-header">{{ title }}</h1>
+	<h2 class="sub-header">Top 10 Ventas</h2>
+	{% if not products %}
+		<p>No hay productos.</p>
+	{% else %}
+		<div >
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th class="col-sm-1 text-right">#</th>
+						<th class="col-sm-1">SKU</th>
+						<th class="col-sm-1">Ventas</th>
+						<th class="col-sm-4">Nombre</th>
+						<th class="col-sm-2">Marca</th>
+						<th class="col-sm-1">Stock</th>
+						<th class="col-sm-1">Precio</th>
+						<th class="col-sm-1"><!-- Actions --></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for product in products %}
+						<tr>
+							<td class="text-right"><strong>{{ loop.index }}</strong></td>
+							<td>{{ product.sku }}</td>
+							<td>{{ product.sales }}</td>
+							<td>{{ product.name }}</td>
+							<td>{{ product.brand_name }}</td>
+							<td>{{ product.stock }}</td>
+							<td>
+								{% if (product.base_price != product.price ) %}
+								<span class="text-muted"><del><small>S/. {{ product.base_price }}</small></del></span>&nbsp;S/.{{ product.price }}
+								{% else %}
+									S/. {{ product.price }}
+								{% endif %}
+							</td>
+							<td>
+								<span class="glyphicon glyphicon-eye-open show-on-hover"></span>
+								<!-- <div class="btn-group show-on-hover">
+									<button type="button" class="btn">Editar</button>
+									<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+										<span class="caret"></span>
+										<span class="sr-only">Abrir opciones</span>
+									</button>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="#">Elimina</a></li>
+										<li><a href="#">Another action</a></li>
+										<li><a href="#">Something else here</a></li>
+										<li class="divider"></li>
+										<li><a href="#">Eliminar</a></li>
+									</ul>
+								</div> -->
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	{% endif %}
+{% endblock %}

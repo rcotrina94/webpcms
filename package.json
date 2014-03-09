@@ -1,0 +1,18 @@
+{
+  "name": "webPCMS",
+  "description": "web Product Catalog Management System",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.8",
+    "mongoose": "3.8.6",
+    "mongoose-auth": "0.0.12",
+    "everyauth": "0.4.5",
+    "mongoose-slug-unique": "^1.2.1",
+    "mongoose-validator": "^0.2.2",
+    "nunjucks": "^1.0.1"
+  }
+}

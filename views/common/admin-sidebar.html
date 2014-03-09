@@ -1,0 +1,118 @@
+<nav class="navbar-default navbar-static-side col-sm-3 col-md-2" role="navigation">
+	<div class="sidebar-collapse">
+		<ul class="nav" id="side-menu">
+			<li class="sidebar-search">
+				<div class="input-group custom-search-form">
+					<input type="text" class="form-control" placeholder="Buscar...">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">
+							<i class="fa fa-search"></i>
+						</button>
+					</span>
+				</div>
+				<!-- /input-group -->
+			</li>
+
+			<li class="{{ 'active' if active == 'dashboard' }}">
+				<a href="/admin/"><i class="fa fa-home fa-fw"></i> Escritorio</a>
+			</li>
+			<li>
+				<a href="javascript:void(0); var x = '/admin/orders'"><i class="fa fa-edit fa-fw"></i> Pedidos</a>
+			</li>
+			<li class="parent {{ 'active' if fn.isIn(active,'product_list,new_product') }}" >
+				<a href="#"><i class="fa fa-table fa-fw"></i> Productos<span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level">
+					<li class="{{ 'active' if active == 'product_list' }}">
+						<a href="/admin/products"><i class="fa fa-list fa-fw"></i> Lista de Productos</a>
+					</li>
+					<li class="{{ 'active' if active == 'new_product' }}">
+						<a href="/admin/products/new"><i class="fa fa-plus fa-fw"></i> Nuevo Producto</a>
+					</li>
+					
+				</ul>
+				<!-- /.nav-second-level -->
+			</li>
+			<li class="parent {{ 'active' if fn.isIn(active, 'brand_list,new_brand') }} %>" >
+				<a href="#"><i class="fa fa-certificate fa-fw"></i> Marcas<span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level">
+					<li class="<% if (active == 'brand_list'){ %>active<% } %>">
+						<a href="/admin/brands"><i class="fa fa-list fa-fw"></i> Lista de marcas</a>
+					</li>
+					<li class="<% if (active == 'new_brand'){ %>active<% } %>">
+						<a href="/admin/brands/new"><i class="fa fa-plus fa-fw"></i> Registrar marca</a>
+					</li>
+				</ul>
+				<!-- /.nav-second-level -->
+			</li>
+			<li>
+				<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Reportes</a>
+			</li>
+			<!-- <li class="parent ">
+				<a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level">
+					<li>
+						<a href="panels-wells.html">Panels and Wells</a>
+					</li>
+					<li>
+						<a href="buttons.html">Buttons</a>
+					</li>
+					<li>
+						<a href="notifications.html">Notifications</a>
+					</li>
+					<li>
+						<a href="typography.html">Typography</a>
+					</li>
+					<li>
+						<a href="grid.html">Grid</a>
+					</li>
+				</ul>
+				<!- /.nav-second-level -
+			</li>
+			<li class="parent">
+				<a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level">
+					<li>
+						<a href="#">Second Level Item</a>
+					</li>
+					<li>
+						<a href="#">Second Level Item</a>
+					</li>
+					<li class="parent">
+						<a href="#">Third Level <span class="fa arrow"></span></a>
+						<ul class="nav nav-third-level">
+							<li>
+								<a href="#">Third Level Item</a>
+							</li>
+							<li>
+								<a href="#">Third Level Item</a>
+							</li>
+							<li>
+								<a href="#">Third Level Item</a>
+							</li>
+							<li>
+								<a href="#">Third Level Item</a>
+							</li>
+						</ul>
+						<!- /.nav-third-level -
+					</li>
+				</ul>
+				<!-/.nav-second-level -
+			</li>
+			<li class="parent">
+				<a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
+				<ul class="nav nav-second-level">
+					<li>
+						<a href="blank.html">Blank Page</a>
+					</li>
+					<li>
+						<a href="login.html">Login Page</a>
+					</li>
+				</ul>
+				<! /.nav-second-level -
+			</li> -->
+		</ul>
+		<!-- /#side-menu -->
+	</div>
+	<!-- /.sidebar-collapse -->
+</nav>
+<!-- /.navbar-static-side -->

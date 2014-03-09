@@ -1,0 +1,3 @@
+.hg*
+.hg/*
+node_modules/*

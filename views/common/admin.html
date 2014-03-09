@@ -1,0 +1,64 @@
+{% extends "common/main.html" %}
+
+{% block custom_head_css %}
+	<link href="/stylesheets/dashboard.css" rel="stylesheet">
+	<link href="/stylesheets/admin.css" rel="stylesheet">
+{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">{{ site.title }}</a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">Escritorio</a></li>
+				<li><a href="#">Configuración</a></li>
+				<li><a href="#">Ayuda</a></li>
+				<li><a href="#">Cerrar Sesión</a></li>
+			</ul>
+			<form class="navbar-form navbar-right">
+				<input type="text" class="form-control" placeholder="Buscar...">
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block container %}
+<div class="container-fluid">
+	<div class="row">
+	{% include "common/admin-sidebar.html" %}
+		<div id="main-content" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		{% block main %}
+		{% endblock %}
+		</div>
+	</div>
+	<!-- /.row -->
+	}
+</div>
+<!-- /.container -->
+{% endblock %}
+{% block footer %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="/javascripts/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+<!-- Page-Level Plugin Scripts - Blank -->
+
+<!-- SB Admin Scripts - Include with every page -->
+<script src="/javascripts/sb-admin.js"></script>
+<script src="/javascripts/holder.min.js"></script>
+<script src="/javascripts/plugins/fileinput.js"></script> 
+{% block inline_js %}
+{% endblock %}
+
+{% endblock %}
