@@ -49,6 +49,11 @@ app.locals({
 });
 
 // development only
+app.configure('development', function() {
+    var edt = require('express-debug');
+    edt(app, {/* settings */});
+});
+
 if ('development' == app.get('env')) {
-	app.use(express.errorHandler());
+    app.use(express.errorHandler());
 }

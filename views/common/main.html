@@ -18,7 +18,13 @@
 	{% block custom_head_css %}
 	<link href="/stylesheets/root_common.css" rel="stylesheet">
 	{% endblock %}
-
+	{% if settings.env == 'development' %}
+	<style type="text/css">
+		#EDT{
+			z-index: 1031 !important;
+		}
+	</style>
+	{% endif %}
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

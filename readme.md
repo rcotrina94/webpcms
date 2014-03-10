@@ -17,7 +17,12 @@ In brief: webPCMS is a simple web application that provides to retailers a way t
 	1. Open terminal/console
 	2. `cd` to main directory
 	3. `npm install` and wait until finished
-4. On terminal: `node app`
+4. To run the app just write down on terminal:
+	* For Production : `npm start`
+	* For Development: `npm run dev`
+[5].	If using `supervisor`:
+	* For Production : `npm run spro`
+	* For Development: `npm run sdev`
 
 
 ## Development

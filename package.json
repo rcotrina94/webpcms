@@ -3,7 +3,10 @@
   "description": "web Product Catalog Management System",
   "version": "0.1.0",
   "scripts": {
-    "start": "node app.js"
+    "start": "NODE_ENV=production node app",
+    "dev" : "NODE_ENV=development node app",
+    "spro": "NODE_ENV=production supervisor app",
+    "sdev": "NODE_ENV=development supervisor -e 'node,js,html' app"
   },
   "dependencies": {
     "express": "3.4.8",
