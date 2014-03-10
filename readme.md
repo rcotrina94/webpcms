@@ -24,4 +24,4 @@ In brief: webPCMS is a simple web application that provides to retailers a way t
 
 webPCMS is baked in Node.js (Javascript) and Mongoose (MongoDB ODM for Node) in backend, and a fully HTML5, CSS3, JS in frontend with Bootstrap framework and jQuery, redered by Nunjucks, a jinja-like/twig-like super flexible template engine for Node.
 
-- Trello task board: https://trello.com/b/fm2feylq/webpcms
+- [Trello task board](https://trello.com/b/fm2feylq/webpcms)
