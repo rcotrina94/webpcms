@@ -8,22 +8,22 @@
 
 {% macro horizontal_field(name, label='', value='', type='text', required=false, pattern=false, class='', autocomplete='off', checked=false) %}
 	<div class="form-group">
-	{% if type == 'boolean' %}
-		<div class="col-md-offset-2 col-md-10">
-			<div class="checkbox"> 
-				<label for="{{ name }}">
-					<input id="{{ name }}" name="{{ name }}" type="checkbox"{% if checked %} checked="checked" {% endif %}{% if required %} required="required" {% endif %}> {{ label }}
-				</label>
+		{% if type == 'boolean' %}
+			<div class="col-md-offset-2 col-md-10">
+				<div class="checkbox"> 
+					<label for="{{ name }}">
+						<input id="{{ name }}" name="{{ name }}" type="checkbox"{% if checked %} checked="checked" {% endif %}{% if required %} required="required" {% endif %}> {{ label }}
+					</label>
+				</div>
 			</div>
-		</div>
-	{% else %}
+		{% else %}
 
-		{{ input_label(name, label=label) }}
-		<div class="col-md-10">
-			{{ input_field(name, value=value, type=type, required=required, class=clas, autocomplete=autocomplete) }}
-		</div>
+			{{ input_label(name, label=label) }}
+			<div class="col-md-10">
+				{{ input_field(name, value=value, type=type, required=required, class=clas, autocomplete=autocomplete) }}
+			</div>
 
-	{% endif%}
+		{% endif%}
 	</div>
 {% endmacro %}
 
