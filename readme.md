@@ -9,7 +9,7 @@ In brief: webPCMS is a simple web application that provides to retailers a way t
 
 1. Install a Node.js and MongoDB enviroment
 2. Download this repository or clone:
-	* Mercurial:
+    * Mercurial:
 		* `hg clone https://bitbucket.org/rcotrina94/webpcms`
 	* Git:
 		* `git clone https://github.com/rcotrina94/webPCMS.git`
@@ -20,9 +20,9 @@ In brief: webPCMS is a simple web application that provides to retailers a way t
 4. To run the app just write down on terminal:
 	* For Production : `npm start`
 	* For Development: `npm run dev`
-[5].	If using `supervisor`:
-	* For Production : `npm run spro`
-	* For Development: `npm run sdev`
+    * If using `supervisor`:
+        * For Production : `npm run spro`
+        * For Development: `npm run sdev`
 
 
 ## Development
