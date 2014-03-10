@@ -165,7 +165,6 @@ exports.new_product = function(req, res){
 	}
 };
 
-
 exports.brand_list = function(req,res){
 	Brand.find({}, function (e, brands){
 		if (e){
@@ -177,7 +176,7 @@ exports.brand_list = function(req,res){
 			active: 'brand_list',
 		});
 	});
-}
+};
 
 exports.new_brand = function(req,res){
 	var title = 'Registrar Marca';
@@ -232,4 +231,43 @@ exports.new_brand = function(req,res){
 
 	}
 
-}
+};
+
+exports.edit_products = function(req,res){
+	var id = req.param('id');
+
+	var productNotFound = function(){
+		res.render('admin/products/edit.html',{
+			title:'Editar producto',
+			msg:{
+				error: true,
+				title: 'Producto no encontrado',
+				body: 'El ID del producto no coincide con ninguno registrado.'
+			}
+		});
+	};
+
+	try{
+		var product_id = mongoose.Types.ObjectId(id);
+		Product.findOne({_id:id}, function (err, product){
+			if (err){
+				console.log(err);
+				res.send("Un error ha ocurrido");
+			} else {
+				console.log("Product",product);
+
+				if (product){
+					return res.render('admin/products/edit.html',{
+						title:'Editar producto',
+						product: product
+					});
+				} else {
+					productNotFound();
+				}
+			}
+		});
+	} catch (error){
+		console.log(error);
+		productNotFound();
+	}
+};

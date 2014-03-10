@@ -1,4 +1,4 @@
-{% extends "common/admin.html" %}
+{% extends "common/admin.html" %} {% set form_msg = true %}
 {% block main %}
 	<div class="page-header pull-right hidden-print">
 		<a href="/admin/brands/new" class="btn btn-default">Cancelar</a>
@@ -44,9 +44,9 @@
 		};
 
 		$(function () {
-			$('#name').bind('input', function() { 
-		    $('#slug_pre').val(slugify($(this).val())); // get the current value of the input field.
-		  });
+			$('#name').on('input', function() { 
+		    	$('#slug_pre').val(slugify($(this).val())); // get the current value of the input field.
+		  	});
 		});
 	</script>
 {% endblock %}

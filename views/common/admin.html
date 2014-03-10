@@ -57,10 +57,11 @@
 <script src="/javascripts/sb-admin.js"></script>
 <script src="/javascripts/holder.min.js"></script>
 <script src="/javascripts/plugins/fileinput.js"></script> 
+
 {% block inline_js %}
 {% endblock %}
-{% if msg %}
-	{% include "common/admin.form.js.html" %}
-{% endif %}
+
+{% if form_msg and msg %} {% include "common/admin.form.js.html" %} {% endif %}
+{% if list_path %} {% include 'common/admin.list.link.js.html' %} {% endif %}
 
 {% endblock %}

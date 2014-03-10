@@ -1,0 +1,17 @@
+{% extends "common/admin.html" %}
+
+{% import "macros/forms.html" as forms %}
+
+{% block main %}
+
+	<h1 class="page-header">{{ title }}</h1>
+	<form id="form" method="post" class="form form-horizontal">
+		<fieldset class="col-md-6">
+			{{ forms.horizontal_field('name', label='Nombre', value=product.name, required=true) }}
+			{{ forms.horizontal_field('brand_name', label='Marca', value=product.brand_name, required=true) }}
+			{{ forms.horizontal_field('price', label='Precio', value=product.price, required=true) }}
+			{{ forms.horizontal_field('base_price', label='Oferta', value=product.base_price, required=true) }}
+		</fieldset>
+	</form>
+
+{% endblock %}

@@ -12,3 +12,5 @@ app.get('/admin/brands', admin.brand_list);
 
 app.all('/admin/products/new', admin.new_product);
 app.all('/admin/brands/new', admin.new_brand);
+
+app.all('/admin/products/edit/:id', admin.edit_products);

@@ -1,0 +1,9 @@
+<script type="text/javascript">
+	$(function(){
+		$.each($('tr[data-product-id'), function(index, val) {
+			$(val).on('click', function(event) {
+				document.location = '{{ list_path }}'+'/edit/'+$(this).attr('data-product-id');
+			}); 	 
+		}); 
+	});
+</script>

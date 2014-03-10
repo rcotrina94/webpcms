@@ -22,7 +22,7 @@
 				</thead>
 				<tbody>
 					{% for product in products %}
-						<tr {{ 'class="text-muted"' if not product.is_active }} >
+						<tr data-product-id="{{ product.id }}" {{ 'class="text-muted"' if not product.is_active }} >
 							<td>{{ product.sku }}</td>
 							<td>{{ product.sales }}</td>
 							<td>{{ product.name }}{% if not product.is_active %} <span class="label label-info">INACTIVO</span> {% endif %}</td>
@@ -58,4 +58,6 @@
 			</table>
 		</div>
 	{% endif %}
+	
+	{% set list_path = "/admin/products" %}
 {% endblock %}
