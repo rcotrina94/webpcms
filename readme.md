@@ -2,7 +2,7 @@
 
 ## What is it?
 
-In brief: webPCMS is a simple web application that provides a way to put your products catalog online.
+In brief: webPCMS is a simple web application that provides to retailers a way to put your products catalog online that let customers to generate a pro forma invoice wich is emailed to retailer. This email contains all information necessary to agree a sale.
 
 
 ## How-to Install
