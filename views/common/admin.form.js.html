@@ -1,8 +1,8 @@
 <script type="text/javascript">
-	var alert = '<div style="position:fixed;top:70px;right:20px;"><div id="myAlert" class="alert alert-dismissable ';
-	var msg = JSON.parse('{{ fn.toString(msg) | safe }}'); 
-
 	$(function () {
+		var alert = '<div style="position:fixed;top:70px;right:20px;"><div id="myAlert" class="alert alert-dismissable ';
+		var msg = JSON.parse('{{ fn.toString(msg) | safe }}'); 
+		
 		if(msg.error){
 			var emsg;
 
