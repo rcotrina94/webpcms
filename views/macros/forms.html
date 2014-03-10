@@ -1,12 +1,17 @@
 {% macro input_field(name, value='', type='text', required=false, pattern=false, class='', autocomplete='off') %}
+
 	<input autocomplete="off" class="form-control{{ " " if class }}{{ class }}" id="{{ name }}" name="{{ name }}" {% if pattern %} pattern="{{ pattern }}" {% endif %}{% if required %} required="required" {% endif %} value="{{ value }}" >
+
 {% endmacro %}
+
 
 {% macro input_label(name, label='') %}
 	<label for="{{ name }}" class="col-md-2 control-label">{{ label }}</label>
 {% endmacro %}
 
+
 {% macro horizontal_field(name, label='', value='', type='text', required=false, pattern=false, class='', autocomplete='off', checked=false) %}
+
 	<div class="form-group">
 		{% if type == 'boolean' %}
 			<div class="col-md-offset-2 col-md-10">
