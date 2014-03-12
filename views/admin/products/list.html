@@ -7,7 +7,7 @@
 		<p>No hay productos.</p>
 	{% else %}
 
-		<div >
+		<div class="webpcmd-list">
 			<table class="table table-striped table-hover table-condensed">
 				<thead>
 					<tr>
@@ -24,7 +24,7 @@
 					{% for product in products %}
 						<tr data-product-id="{{ product.id }}" {{ 'class="text-muted"' if not product.is_active }} >
 							<td>{{ product.sku }}</td>
-							<td>{{ product.sales }}</td>
+							<td>{{ product.sales }}</td>	
 							<td>{{ product.name }}{% if not product.is_active %} <span class="label label-info">INACTIVO</span> {% endif %}</td>
 							<td>{{ product.brand_name }}</td>
 							<td>{{ product.stock }}</td>

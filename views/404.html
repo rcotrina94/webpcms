@@ -13,9 +13,9 @@
 </head>
 <body>
 	<div class="jumbotron text-center">
-	  <h1>Error 404</h1>
-	  <h4><small>{{ url }}</small> </h4>
-	  <p>La página que ha solicitado no existe en el servidor.</p>
+	  <h1>Error 404{{": "+error.title if error }}</h1>
+	  <h4><small>{{ url or error.id }}</small> </h4>
+	  <p>{{ "La página que ha solicitado no existe en el servidor." if not error else error.body }}</p>
 	  
 	  <p><button onclick="window.history.back()" class="btn btn-primary btn-lg">Atrás</button></p>
 	</div>

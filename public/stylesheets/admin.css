@@ -136,3 +136,7 @@ small .badge{
 .form-group.has-success .fileinput .fileinput-preview { color: #3c763d }
 .form-group.has-success .fileinput .thumbnail { border-color: #d6e9c6 }
 .input-group-addon:not(:first-child) { border-left: 0 }
+
+.webpcmd-list table > tbody > tr {
+    cursor: pointer;
+}

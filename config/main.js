@@ -4,12 +4,20 @@ nunjucks.configure('views', {
     autoescape: true,
     express: app
 });
+app.use(express.compress()); 
 
+/* Compress response data with gzip / deflate.
+This middleware should be placed "high" within
+the stack to ensure all responses may be compressed.
+*/
+
+app.set("case sensitive routing", true);
+app.set('strict routing', true);
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(express.methodOverride());
+/*app.use(express.methodOverride());*/
 app.use(express.cookieParser('thisIsAsecretKEY'));
 app.use(express.session({secret:"thisIsAsecretKEY"}));
 app.use(app.router);

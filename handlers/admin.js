@@ -235,14 +235,18 @@ exports.new_brand = function(req,res){
 
 exports.edit_products = function(req,res){
 	var id = req.param('id');
+	var url = req.param('url');
+	var productNotFound = function(prod_error){
+		// var error = 'Producto con ID: "'+id+'" no coincide con ninguno registrado.'
 
-	var productNotFound = function(){
-		res.render('admin/products/edit.html',{
-			title:'Editar producto',
-			msg:{
-				error: true,
+		res.render('404.html',{
+			title:'Producto no encontrado.',
+			url: url,
+			error: {
 				title: 'Producto no encontrado',
-				body: 'El ID del producto no coincide con ninguno registrado.'
+				id: id,
+				body: "El ID de producto no coincide con ninguno de los produtos registados.",
+				raw: prod_error
 			}
 		});
 	};
@@ -268,6 +272,6 @@ exports.edit_products = function(req,res){
 		});
 	} catch (error){
 		console.log(error);
-		productNotFound();
+		productNotFound(error);
 	}
 };
