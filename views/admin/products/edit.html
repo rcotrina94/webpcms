@@ -11,9 +11,43 @@
 
 			{{ forms.horizontal_field('brand_name', label='Marca', value=product.brand_name, required=true) }}
 
-			{{ forms.horizontal_field('price', label='Precio', value=product.price, required=true) }}
+			<div class="form-group">
+				<label for="price" class="col-md-2 control-label">Precio:</label>
+				<div class="col-md-10 input-group">
+					<span class="input-group-addon">S/.</span>
+					<input autocomplete="off" class="form-control" id="base_price" name="base_price" type="number" step="any" value="{{ product.base_price }}" >
+					<span id="addOfferBtn" class="input-group-btn">
+						<button title="Añadir oferta" onclick="addOffer()" class="btn btn-info" type="button">Añadir rebaja</button>
+					</span>
+				</div>
+			</div>
+			<div id="priceOffer" class="form-group" {{ 'style=display:none;' if product.price == product.base_price }}>
+				<label for="price" class="col-md-2 control-label">Rebaja:</label>
+				<div class="col-md-10 input-group">
+					<span class="input-group-addon">S/.</span>
+					<input autocomplete="off" class="form-control" id="price" name="price" type="number" step="any" value={{ product.price }}>
+					<span id="remOfferBtn" class="input-group-btn">
+						<button title="Quitar oferta" onclick="remOffer()" class="btn btn-danger" type="button">X</button>
+					</span>
+				</div>
+			</div>
 
-			{{ forms.horizontal_field('base_price', label='Oferta', value=product.base_price, required=true) }}
+			{{ forms.horizontal_field('sku', label='SKU', value=product.sku, required=true) }}
+
+			{{ forms.horizontal_field('is_active', label='Producto Activo', type='boolean', value=product.is_active, required=true) }}
 		</fieldset>
 	</form>
+{% endblock %}
+
+{% block inline_js %}
+	<script type="text/javascript">
+		function addOffer(){
+			$('#priceOffer').show();
+			$('#addOfferBtn').hide();
+		}
+		function remOffer(){
+			$('#priceOffer').hide().find('input').val('');
+			$('#addOfferBtn').show();
+		}
+	</script>
 {% endblock %}

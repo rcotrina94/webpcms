@@ -20,26 +20,11 @@
 				<tbody>
 					{% for brand in brands %}
 							<td>{{ loop.index }}</td>
-							<!-- <td>{{ brand._id }}</td> -->
 							<td>{{ brand.name }}</td>
 							<td>{{ brand.slug }}</td>
 							<td>{{ brand.products.length }}</td>
 							<td>
 								<span class="glyphicon glyphicon-eye-open show-on-hover"></span>
-								<!-- <div class="btn-group show-on-hover">
-									<button type="button" class="btn">Editar</button>
-									<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
-										<span class="caret"></span>
-										<span class="sr-only">Abrir opciones</span>
-									</button>
-									<ul class="dropdown-menu" role="menu">
-										<li><a href="#">Elimina</a></li>
-										<li><a href="#">Another action</a></li>
-										<li><a href="#">Something else here</a></li>
-										<li class="divider"></li>
-										<li><a href="#">Eliminar</a></li>
-									</ul>
-								</div> -->
 							</td>
 						</tr>
 					{% endfor %}

@@ -17,7 +17,7 @@
 			<div class="col-md-offset-2 col-md-10">
 				<div class="checkbox"> 
 					<label for="{{ name }}">
-						<input id="{{ name }}" name="{{ name }}" type="checkbox"{% if checked %} checked="checked" {% endif %}{% if required %} required="required" {% endif %}> {{ label }}
+						<input id="{{ name }}" name="{{ name }}" type="checkbox"{% if checked or value==true %} checked {% endif %}{% if required %} required="required" {% endif %}> {{ label }}
 					</label>
 				</div>
 			</div>

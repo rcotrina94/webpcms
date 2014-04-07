@@ -2,7 +2,7 @@
 	$(function () {
 		var alert = '<div style="position:fixed;top:70px;right:20px;"><div id="myAlert" class="alert alert-dismissable ';
 		var msg = JSON.parse('{{ fn.toString(msg) | safe }}'); 
-		
+		console.log(msg);
 		if(msg.error){
 			var emsg;
 
@@ -18,9 +18,34 @@
 			});
 
 			if(msg.data_sent){
-				jQuery.each(msg.data_sent, function(input, val) {
-					jQuery('#'+input).val(val);
-				});
+/*				jQuery.each(msg.data_sent, function(input, val) {
+					jQuery("[name='"+input+"']").val(val);
+				});*/
+				
+				$.each(msg.data_sent, function(input,val){
+					console.log(input, typeof val)
+				    if(typeof val == 'object') {
+				        console.log(input+": ")
+				    
+				        jQuery.each(val, function(subinput, subval){
+				            console.log("     "+subinput+": "+subval);
+				        })
+				    } else {
+				    	console.log(input+": "+val) 
+				    }
+				})
+
+				$.each(msg.data_sent, function(input,val){
+					console.log(input, typeof val)
+				    if(typeof val == 'object') {			    
+				        jQuery.each(val, function(subinput, subval){
+				            jQuery("[name='"+input+"["+subinput+"]']").val(subval);
+				        })
+				    } else {
+				    	jQuery("[name='"+input+"']").val(val);
+				    }
+				})
+
 			}
 		}
 

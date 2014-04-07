@@ -57,6 +57,7 @@ exports.new_product = function(req, res){
 	} else if (req.method == 'POST') {
 		var isNewBrand = false;
 		var product = req.body;
+		console.log(product)
 		var newProduct = new Product(product);
 		var namebrand = product.brand_name;
 		var brandID;
@@ -71,14 +72,36 @@ exports.new_product = function(req, res){
 								if (re) {console.log(re);}
 								console.log("Marca eliminada por error al guardar producto: "+brandID)
 							});
+						} else {
+							console.log("No se elimina ninguna marca.")
 						}
 
 						console.log(err);
+
+						if(err.name == "MongoError"){
+							err = {
+								"message": "Validation failed",
+								"name": "ValidationError",
+								"errors": {
+									"sku": {
+										"message": "Path `sku` is duplicated.",
+										"name": "ValidatorError",
+										"path": "slug",
+										"type": "duplicated",
+										"value": ""
+									}
+								}
+							}
+						}
+
+						console.log(err);
+
 						Brand.find({}, function (error, brands){
 							if (error){
 								console.log(error);
 								return res.send("Un error ha ocurrido")
 							} else {
+								console.log("Producto con error:"+product)
 								return res.render('admin/products/new.html', {
 									title: title,
 									brands: brands,

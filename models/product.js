@@ -14,7 +14,7 @@ var CustomDataSchema = new Schema ({
 
 productSchema = new Schema({
 	sku: { type:String, required:true, unique:true},
-	is_active: {type:Boolean, default:true},
+	is_active: {type:Boolean, default:false},
 	name: {type: String, required:true},
 	base_price: {type:Number, required:true, default:0},
 	price: {type:Number, default:0},
