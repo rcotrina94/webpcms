@@ -6,6 +6,6 @@ brandSchema = new Schema({
 	products : {type: [Schema.Types.ObjectId], ref:'Product'}
 });
 
-brandSchema.plugin(slug('name'));
+brandSchema.plugin(slug('name', true));
 
 Brand = mongoose.model('Brand', brandSchema);
